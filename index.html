@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fat-Loss Activity Dashboard</title>
+    <meta name="description" content="A phone-friendly dashboard for tracking the Phase 1 fat-loss activity plan." />
+    <meta name="theme-color" content="#2f7d5b" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="dashboard-title">
+        <div>
+          <p class="eyebrow">Phase 1 tracker</p>
+          <h1 id="dashboard-title">Fat-loss activity dashboard</h1>
+          <p class="hero-copy">
+            Track the realistic habits from your starter plan: moderate fasting, protein, lighter evenings,
+            two strength sessions, golf, walks, sleep, stress practice, and simple scale check-ins.
+          </p>
+        </div>
+        <div class="score-card" aria-live="polite">
+          <span class="score-label">Weekly consistency</span>
+          <strong id="weekly-score">0%</strong>
+          <span id="score-note">Log today to start your streak.</span>
+        </div>
+      </section>
+
+      <section class="grid stats-grid" aria-label="Weekly summary">
+        <article class="stat-card">
+          <span>Strength</span>
+          <strong><span id="strength-count">0</span>/2</strong>
+          <small>sessions this week</small>
+        </article>
+        <article class="stat-card">
+          <span>HIIT</span>
+          <strong><span id="hiit-count">0</span>/1</strong>
+          <small>short session goal</small>
+        </article>
+        <article class="stat-card">
+          <span>Scale</span>
+          <strong><span id="weigh-count">0</span>/3</strong>
+          <small>same conditions</small>
+        </article>
+        <article class="stat-card">
+          <span>Current streak</span>
+          <strong><span id="streak-count">0</span></strong>
+          <small>days logged in a row</small>
+        </article>
+      </section>
+
+      <section class="phone-test panel" aria-labelledby="phone-test-title">
+        <div>
+          <p class="eyebrow">Phone testing</p>
+          <h2 id="phone-test-title">Open this tracker on your phone</h2>
+          <p>
+            When this dashboard is published, open the same URL on your phone and use your browser’s
+            <strong>Add to Home Screen</strong> option for a simple app-like shortcut.
+          </p>
+        </div>
+        <button type="button" class="secondary" id="share-app">Share or copy link</button>
+      </section>
+
+      <section class="dashboard-layout">
+        <form id="daily-form" class="panel form-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Daily check-in</p>
+              <h2>Log your habits</h2>
+            </div>
+            <label class="date-picker">
+              Date
+              <input type="date" id="entry-date" name="date" required />
+            </label>
+          </div>
+
+          <div class="habit-list">
+            <label class="habit-row">
+              <input type="checkbox" name="fasting" />
+              <span>
+                <strong>Fasting window completed</strong>
+                <small>12:12 daily; mark 14:10 below when you stretch it.</small>
+              </span>
+            </label>
+            <label class="habit-row">
+              <input type="checkbox" name="extendedFast" />
+              <span>
+                <strong>14:10 day</strong>
+                <small>A bonus target for 2–3 comfortable days per week.</small>
+              </span>
+            </label>
+            <label class="habit-row">
+              <input type="checkbox" name="protein" />
+              <span>
+                <strong>Protein at main meals</strong>
+                <small>Supports fullness and muscle preservation.</small>
+              </span>
+            </label>
+            <label class="habit-row">
+              <input type="checkbox" name="lowSugar" />
+              <span>
+                <strong>Sugar/refined carbs kept low</strong>
+                <small>Keep the food cuts you already started.</small>
+              </span>
+            </label>
+            <label class="habit-row">
+              <input type="checkbox" name="lightDinner" />
+              <span>
+                <strong>Lighter evening eating</strong>
+                <small>Helps protect the fasting window.</small>
+              </span>
+            </label>
+            <label class="habit-row">
+              <input type="checkbox" name="sleep" />
+              <span>
+                <strong>7+ hours sleep</strong>
+                <small>Recovery target you are already close to maintaining.</small>
+              </span>
+            </label>
+            <label class="habit-row">
+              <input type="checkbox" name="stress" />
+              <span>
+                <strong>5-minute stress reset</strong>
+                <small>Breathing, walk without phone, prayer, meditation, or journaling.</small>
+              </span>
+            </label>
+          </div>
+
+          <div class="metric-grid">
+            <label>
+              Strength sessions
+              <input type="number" name="strength" min="0" max="3" step="1" value="0" />
+            </label>
+            <label>
+              Walks
+              <input type="number" name="walks" min="0" max="4" step="1" value="0" />
+            </label>
+            <label>
+              HIIT sessions
+              <input type="number" name="hiit" min="0" max="2" step="1" value="0" />
+            </label>
+            <label>
+              Golf hours
+              <input type="number" name="golf" min="0" max="8" step="0.5" value="0" />
+            </label>
+            <label>
+              Weight
+              <input type="number" name="weight" min="0" step="0.1" placeholder="optional" />
+            </label>
+          </div>
+
+          <label class="notes-label">
+            Notes / meal planning ideas
+            <textarea name="notes" rows="3" placeholder="Example: Greek yogurt snack, chicken salad lunch, takeaway avoided"></textarea>
+          </label>
+
+          <div class="button-row">
+            <button type="submit">Save day</button>
+            <button type="button" class="secondary" id="clear-day">Clear day</button>
+          </div>
+        </form>
+
+        <aside class="panel">
+          <div class="panel-heading compact">
+            <div>
+              <p class="eyebrow">This week</p>
+              <h2>Progress map</h2>
+            </div>
+          </div>
+          <div id="week-grid" class="week-grid" aria-label="Daily habit completion"></div>
+          <div class="targets">
+            <h3>Weekly targets</h3>
+            <ul>
+              <li>12:12 fasting on most days</li>
+              <li>14:10 on 2–3 days if comfortable</li>
+              <li>2 strength sessions</li>
+              <li>Weekend golf + 1–2 walks</li>
+              <li>1 short HIIT session</li>
+              <li>3 scale check-ins</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
