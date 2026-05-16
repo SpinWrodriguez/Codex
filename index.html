@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fat-Loss Activity Dashboard</title>
+    <meta name="description" content="A phone-friendly dashboard for tracking the Phase 1 fat-loss activity plan." />
+    <meta name="theme-color" content="#2f7d5b" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.svg" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -45,6 +50,18 @@
           <strong><span id="streak-count">0</span></strong>
           <small>days logged in a row</small>
         </article>
+      </section>
+
+      <section class="phone-test panel" aria-labelledby="phone-test-title">
+        <div>
+          <p class="eyebrow">Phone testing</p>
+          <h2 id="phone-test-title">Open this tracker on your phone</h2>
+          <p>
+            When this dashboard is published, open the same URL on your phone and use your browser’s
+            <strong>Add to Home Screen</strong> option for a simple app-like shortcut.
+          </p>
+        </div>
+        <button type="button" class="secondary" id="share-app">Share or copy link</button>
       </section>
 
       <section class="dashboard-layout">
@@ -168,6 +185,6 @@
         </aside>
       </section>
     </main>
-    <script src="app.js" defer></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

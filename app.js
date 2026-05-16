@@ -15,6 +15,7 @@ const form = document.querySelector("#daily-form");
 const dateInput = document.querySelector("#entry-date");
 const weekGrid = document.querySelector("#week-grid");
 const clearButton = document.querySelector("#clear-day");
+const shareButton = document.querySelector("#share-app");
 
 const formatDate = (date) => date.toISOString().slice(0, 10);
 const todayKey = formatDate(new Date());
@@ -174,6 +175,30 @@ clearButton.addEventListener("click", () => {
   saveEntries(entries);
   fillForm({ date: dateInput.value });
   render();
+});
+
+shareButton.addEventListener("click", async () => {
+  const shareData = {
+    title: document.title,
+    text: "Open my fat-loss activity dashboard.",
+    url: window.location.href,
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+      return;
+    }
+
+    await navigator.clipboard.writeText(window.location.href);
+    shareButton.textContent = "Link copied";
+  } catch {
+    shareButton.textContent = "Copy failed — use address bar";
+  }
+
+  setTimeout(() => {
+    shareButton.textContent = "Share or copy link";
+  }, 1800);
 });
 
 fillForm(loadEntries()[todayKey] ?? { date: todayKey });

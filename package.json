@@ -5,7 +5,10 @@
   "scripts": {
     "start": "vite --host 0.0.0.0",
     "dev": "vite --host 0.0.0.0",
-    "test": "node --check app.js"
+    "test": "node --check app.js && npm run build",
+    "phone": "vite --host 0.0.0.0 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0"
   },
   "devDependencies": {
     "vite": "latest"
